@@ -158,6 +158,28 @@ function LoadingScreen() {
     </main>
   )
 }
+function LoadingScreen() {
+  const loadingLines = ['Analysing your cope levels...','Calibrating the roast cannon...','Consulting the savage oracle...','Calculating how cooked you are...']
+  const [lineIdx, setLineIdx] = useState(0)
+  useEffect(() => {
+    const interval = setInterval(() => setLineIdx(i => (i + 1) % loadingLines.length), 1200)
+    return () => clearInterval(interval)
+  }, [])
+  return (
+    <main className="min-h-screen flex flex-col items-center justify-center px-4">
+      <div className="text-center">
+        <div className="mascot-roast text-8xl mb-6">🔥</div>
+        <div className="flex justify-center gap-2 mb-6">
+          {[0,1,2].map(i => <div key={i} className="load-dot w-3 h-3 rounded-full" style={{background:'#FFE600'}} />)}
+        </div>
+        <p className="text-lg font-black text-yellow-400 uppercase tracking-tight" key={lineIdx} style={{animation:'slideUp 0.3s ease-out'}}>{loadingLines[lineIdx]}</p>
+        <p className="text-xs text-gray-600 mt-2 font-bold">This takes ~5 seconds. Brace yourself.</p>
+      </div>
+    </main>
+  )
+}
+
+const ROUND_TIME = 20
 const ROUND_TIME = 20 // seconds per round
 
 // ============================================================
