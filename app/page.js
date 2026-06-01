@@ -542,7 +542,9 @@ export default function CisraoupaApp() {
   }
 
   // --- LOADING ---
-  if (screen === 'loading') {
+ if (screen === 'loading') {
+    return <LoadingScreen />
+  }
     return <LoadingScreen />
   }
       'Analysing your cope levels...',
